@@ -13,11 +13,10 @@ datasource db {
 
 model Hotel {
   id String @id @default(auto()) @map("_id") @db.ObjectId
-  username String @unique
   password String
-  h_name String
+  h_name String @unique
   tel String
-  email String
+  email String @unique
   address String
   alley String?
   street String
@@ -30,13 +29,12 @@ model Hotel {
 
 model Employee {
   id String @id @default(auto()) @map("_id") @db.ObjectId
-  username String @unique
   password String
   f_name String
   l_name String
   tel String
-  email String?
-  birth DateTime
+  email String @unique
+  birth Json
   address String
   alley String?
   street String

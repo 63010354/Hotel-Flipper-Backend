@@ -1,12 +1,8 @@
 import { IsNumber,IsNotEmpty,IsEmail } from "class-validator";
 
 export class HotelDTO {
-    username: string;
     password: string;
     h_name: string;
-
-    @IsNumber()
-    @IsNotEmpty()
     tel: string;
 
     @IsEmail()
