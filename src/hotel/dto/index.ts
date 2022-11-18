@@ -1,1 +1,2 @@
-export * from './hotel.dto'
+export * from './hotelSignin.dto'
+export * from './hotelSignup.dto'

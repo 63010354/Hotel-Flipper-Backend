@@ -1,4 +1,4 @@
-import { IsNumber,IsNotEmpty,IsEmail, IsString } from "class-validator";
+import { IsNumber, IsNotEmpty, IsEmail, IsString } from "class-validator";
 
 export class EmployeeDTO {
     password: string;

@@ -12,35 +12,35 @@ datasource db {
 }
 
 model Hotel {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-  password String
-  h_name String @unique
-  tel String
-  email String @unique
-  address String
-  alley String?
-  street String
-  district String
+  h_id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  password    String
+  h_name      String
+  tel         String
+  email       String  @unique
+  address     String
+  alley       String?
+  street      String
+  district    String
   subdistrict String
-  province String
-  postcode String
-  hash String
+  province    String
+  postcode    String
+  hash        String
 }
 
 model Employee {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-  password String
-  f_name String 
-  l_name String
-  tel String
-  email String @unique
-  birth String
-  address String
-  alley String?
-  street String
-  district String
+  id          String  @id @default(auto()) @map("_id") @db.ObjectId
+  password    String
+  f_name      String
+  l_name      String
+  tel         String
+  email       String  @unique
+  birth       String
+  address     String
+  alley       String?
+  street      String
+  district    String
   subdistrict String
-  province String
-  postcode String
-  hash String
+  province    String
+  postcode    String
+  hash        String
 }

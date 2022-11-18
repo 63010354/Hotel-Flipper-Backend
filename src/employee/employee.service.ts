@@ -1,20 +1,20 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { EmployeeDTO } from './dto';
-import * as argon2 from "argon2"; 
+import * as argon2 from "argon2";
 
 
 @Injectable()
 export class EmployeeService {
-    constructor(private prisma: PrismaService){}
+    constructor(private prisma: PrismaService) { }
 
-    async signup(dto:EmployeeDTO){
+    async signup(dto: EmployeeDTO) {
         //gen password
         const hash = await argon2.hash(dto.password);
 
         //save new user
         const employee = await this.prisma.employee.create({
-            data:{
+            data: {
                 password: dto.password,
                 f_name: dto.f_name,
                 l_name: dto.l_name,

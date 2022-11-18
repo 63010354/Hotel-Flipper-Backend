@@ -1,6 +1,7 @@
-import { IsNumber,IsNotEmpty,IsEmail } from "class-validator";
+import { IsNotEmpty, IsEmail } from "class-validator";
 
-export class HotelDTO {
+export class HotelSignupDTO {
+    h_id: string;
     password: string;
     h_name: string;
     tel: string;
@@ -8,7 +9,7 @@ export class HotelDTO {
     @IsEmail()
     @IsNotEmpty()
     email: string;
-    
+
     address: string;
     alley: string;
     street: string;

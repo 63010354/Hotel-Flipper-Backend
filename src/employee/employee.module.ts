@@ -7,4 +7,4 @@ import { EmployeeController } from './employee.controller';
   exports: [EmployeeService],
   controllers: [EmployeeController]
 })
-export class EmployeeModule {}
+export class EmployeeModule { }
