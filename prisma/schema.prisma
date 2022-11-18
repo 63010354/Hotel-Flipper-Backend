@@ -30,11 +30,11 @@ model Hotel {
 model Employee {
   id String @id @default(auto()) @map("_id") @db.ObjectId
   password String
-  f_name String
+  f_name String 
   l_name String
   tel String
   email String @unique
-  birth Json
+  birth String
   address String
   alley String?
   street String
