@@ -3,9 +3,8 @@ import { PrismaService } from "src/prisma/prisma.service";
 import { HotelSignupDTO } from "./dto";
 import { HotelSigninDTO } from "./dto";
 import * as argon2 from "argon2";
-import { Prisma } from "@prisma/client";
 import { HttpService } from '@nestjs/axios';
-import { firstValueFrom } from "rxjs";
+import { SignInHandler } from "./signinHandler/signInHandler";
 
 
 
@@ -65,25 +64,35 @@ export class HotelService {
     async signin(dto: HotelSigninDTO) {
         //find hotel
         const hotel = await this.prisma.hotel.findFirst({
+            // select: {
+            //     email: true,
+            //     hash:true
+            // }
             where: {
-                email: dto.email
+                email: dto.email,
+                //hash:true
             }
         })
-
+        
+        let auth = (await new SignInHandler(this.prisma)
+                        .check(dto.email))
+        const result = auth.isNull()
         //cant find
-        if (!hotel) throw new ForbiddenException('Credentials incorrect');
-
+        //throw new ForbiddenException((await outcome).isNull());
+        
         //compare password
-        const pwMatches = await argon2.verify(hotel.hash, dto.password)
+        // const pwMatches = await argon2.verify(hotel.hash, dto.password)
 
         //incorrect
-        if (!pwMatches) throw new ForbiddenException('Credentials incorrect');
-
-        return;
+        if (!await auth.verify(dto.password))
+            throw new ForbiddenException('Credentials incorrect ');
+        return {
+            statuscode:200
+        }
     }
 
     async updateHotel(hotelID: string, data: any) {
-        const updateHotel: Prisma.HotelWhereUniqueInput = await this.prisma.hotel.update({
+        const updateHotel = await this.prisma.hotel.update({
             where: { id: hotelID },
             data: data,
         });
@@ -96,4 +105,6 @@ export class HotelService {
         });
         return data;
     }
+
+    
 }
