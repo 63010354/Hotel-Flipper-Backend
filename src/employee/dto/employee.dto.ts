@@ -1,15 +1,15 @@
 import { IsNumber, IsNotEmpty, IsEmail, IsString } from "class-validator";
 
 export class EmployeeDTO {
-    password: string;
+    @IsNotEmpty()
     f_name: string;
+    @IsNotEmpty()
     l_name: string;
+    @IsNotEmpty()
     tel: string;
-
     @IsEmail()
     @IsNotEmpty()
     email: string;
-
     @IsString()
     birth: string;
 
@@ -20,6 +20,6 @@ export class EmployeeDTO {
     subdistrict: string;
     province: string;
     postcode: string;
-    hash: string;
+
 
 }

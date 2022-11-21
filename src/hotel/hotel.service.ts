@@ -5,6 +5,7 @@ import { HotelSigninDTO } from "./dto";
 import * as argon2 from "argon2";
 import { HttpService } from '@nestjs/axios';
 import { SignInHandler } from "./signinHandler/signInHandler";
+import { Prisma } from "@prisma/client";
 
 
 
@@ -72,6 +73,7 @@ export class HotelService {
                 //hash:true
             }
         })
+        console.log(hotel)
         let auth = (await new SignInHandler(this.prisma)
                         .check(dto.email))
         const result = auth.isNull()
@@ -85,6 +87,7 @@ export class HotelService {
         if (!await auth.verify(dto.password))
             throw new ForbiddenException('Credentials incorrect ');
         return {
+            hotel,
             statuscode:200
         }
     }
