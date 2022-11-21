@@ -1,4 +1,4 @@
-import { Body, Controller, Post, Put, Get } from "@nestjs/common";
+import { Body, Controller, Post, Put, Get, Param } from "@nestjs/common";
 import { HotelSignupDTO } from "./dto";
 import { HotelSigninDTO } from "./dto";
 import { HotelService } from "./hotel.service";
@@ -23,9 +23,9 @@ export class HotelController {
         return this.hotelService.updateHotel(body.h_name, body);
     }
 
-    @Get()
-    async getService(@Body() hotel: HotelSignupDTO) {
-        return this.hotelService.findByType(hotel.h_name);
+    @Get(':id')
+    async getService(@Param("id") h_id: string) {
+        return this.hotelService.findByType(h_id);
     }
 
 }
