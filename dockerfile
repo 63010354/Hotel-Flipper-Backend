@@ -4,9 +4,16 @@ WORKDIR /usr/src/app
 
 COPY package*.json ./
 
+COPY prisma ./prisma/
+COPY .env ./
+
 RUN npm install --only=development
 
 COPY . .
+
+RUN npm install
+
+RUN npx prisma generate
 
 RUN npm run build
 
@@ -23,6 +30,9 @@ RUN npm install --only=production
 
 COPY . .
 
+RUN npx prisma generate
+
+EXPOSE 4001
 COPY --from=development /usr/src/app/dist ./dist
 
 CMD ["node", "dist/main"]

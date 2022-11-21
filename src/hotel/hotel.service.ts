@@ -93,7 +93,7 @@ export class HotelService {
 
     async updateHotel(hotelID: string, data: any) {
         const updateHotel = await this.prisma.hotel.update({
-            where: { id: hotelID },
+            where: { h_id: hotelID },
             data: data,
         });
         return;
@@ -101,7 +101,7 @@ export class HotelService {
 
     async findByType(hotel: string) {
         const data = await this.prisma.hotel.findFirst({
-            where: { id: hotel },
+            where: { h_id: hotel },
         });
         return data;
     }
