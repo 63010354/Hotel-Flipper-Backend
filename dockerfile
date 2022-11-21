@@ -55,6 +55,6 @@ RUN yarn install
 #generate prisma client
 RUN npx prisma generate
 
-EXPOSE 4001
+EXPOSE 3000
 COPY --from=dev /usr/src/app/dist ./dist
 CMD ["node", "dist/main"]

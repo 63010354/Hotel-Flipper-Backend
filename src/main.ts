@@ -14,6 +14,7 @@ async function bootstrap() {
   // console.log(post)
   const app = await NestFactory.create(AppModule);
   app.useGlobalPipes(new ValidationPipe())
-  await app.listen(4001);
+  app.enableCors()
+  await app.listen(3000);
 }
 bootstrap();

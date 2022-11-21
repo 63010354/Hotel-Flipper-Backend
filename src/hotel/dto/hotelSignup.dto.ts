@@ -1,11 +1,15 @@
-import { IsNotEmpty, IsEmail } from "class-validator";
+import { IsNotEmpty, IsEmail, IsString } from "class-validator";
 
 export class HotelSignupDTO {
     h_id: string;
-    password: string;
-    h_name: string;
-    tel: string;
 
+    @IsString()
+    @IsNotEmpty()
+    password: string;
+    @IsNotEmpty()
+    h_name: string;
+    @IsNotEmpty()
+    tel: string;
     @IsEmail()
     @IsNotEmpty()
     email: string;

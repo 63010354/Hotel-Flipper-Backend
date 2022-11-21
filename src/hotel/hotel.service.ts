@@ -26,7 +26,6 @@ export class HotelService {
         // if (data.creditCalculation.recommend === "Bad Credit") {
         //     return "Your credit isn't reliable."
         // }
-
         //gen password
         const hash = await argon2.hash(dto.password);
 
@@ -73,7 +72,6 @@ export class HotelService {
                 //hash:true
             }
         })
-        
         let auth = (await new SignInHandler(this.prisma)
                         .check(dto.email))
         const result = auth.isNull()
