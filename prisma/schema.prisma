@@ -18,7 +18,7 @@ model Hotel {
   tel         String
   email       String  @unique
   address     String
-  alley       String?
+  alley       String
   street      String
   district    String
   subdistrict String
@@ -35,7 +35,7 @@ model Employee {
   email       String  @unique
   birth       String
   address     String
-  alley       String?
+  alley       String
   street      String
   district    String
   subdistrict String

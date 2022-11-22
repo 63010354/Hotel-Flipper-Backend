@@ -13,7 +13,7 @@ export class EmployeeService {
         //gen password
 
         //save new user
-        const employee = await this.prisma.employee.create({
+        const employee:Prisma.EmployeeUpdateInput = await this.prisma.employee.create({
             data: {
                 f_name: dto.f_name,
                 l_name: dto.l_name,
